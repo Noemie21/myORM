@@ -1,0 +1,71 @@
+
+- $ php create table:
+     - enter the name of your entity:
+        "User"
+        *création du document User.php
+    - name of the property:
+        "name"
+    - property type ? [int/varchar/text/date/datetime/...]
+        "varchar"
+    -length ? [255]
+        "255"
+
+------- PAS DE TERMINAL POUR LE MOMENT ----------
+
+doctrine :
+$film = $entityManager->find(Film::class, 1);
+
+$film = new Film();
+$film->setTitle("Avatar");
+$em->persist($film);
+$em->flush();
+
+initialisation :
+$definitions = Setup::createAnnotationMetadataConfiguration([
+  __DIR__."/models"], /*isDevMode*/ true );
+
+$em = EntityManager::create($conn, $definitions);
+
+Eloquent : 
+$film = Film::find(1);
+
+$film = new Film();
+$film->title = "Shrek 2";
+$film->save();
+
+initialisation: 
+$capsule = new Capsule();
+$capsule->addConnection($conn);
+$capsule->bootEloquent();
+
+
+on a besoin de deux chose:
+- connexion
+- definition : (title relié à colonne title, producer relié à producer, ...)
+
+------- POUR UTILISER MON ORM ----------
+
+fichier Film.php
+
+class Film (
+    $title = ["varchar", 255];
+
+    $film = [$title,$producer];
+)
+
+#Créer un objet
+$film = new Film();
+$film->setFilm(["Avatar","James Cameron"]);
+
+#Récupérer un objet:
+$film = Get(Film, 1);
+
+------- LISTE DES OBJETS À CRÉER ----------
+
+- connexion à la db
+- création/implémentation de données dans la table
+- récupération des données dans chaque table
+- définitions des tables (cf. ligne 44)
+
+------- INITIALISATION DE L'ORM DANS LE PROJET ----------
+
